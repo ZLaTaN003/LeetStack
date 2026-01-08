@@ -2,25 +2,30 @@ import { useState, useEffect } from 'react'
 
 
 function App() {
-
-  const [apiResult, setApiResult] = useState(''); 
   
-  async function check() {
-    let x = 'http://localhost:3000/';
-    const response = await fetch(x);
-    console.log(response, x);
-    const data = await response.text();
-    setApiResult(data);
-  }
-  useEffect(() => {
-    check();
-  }, []);
 
 
   return (
     <>
-     <h1>HEY WELCOME</h1>
-     <p> Result from api is - {apiResult}</p>
+      <div className="login-box">
+        <h2>LeetSquad</h2>
+        <form action={"http://localhost:3000/api/signup"} method="POST">
+          <div className="user-box">
+            <input type="text" name="email" required="" />
+            <label>Email</label>
+
+             <input type="password" name="password" required="" />
+            <label>Password</label>
+
+
+              <input type="text" name="leetcodeusername" required="" />
+              <label>LeetCode Username</label>
+          </div>
+         
+         <button type="submit">Sign Up</button>
+        </form>
+      </div>
+
     </>
   )
 }
